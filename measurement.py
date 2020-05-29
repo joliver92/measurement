@@ -38,10 +38,12 @@ class measurement:
     def error(self,error):
         """ Return the uncertainty of the measurement"""
         return self._error
+
     @error.setter
     def error(self,error):
         """Set the uncertainty of the measurement """
         self._error = error
+
     @error.deleter
     def error(self):
         del self._error
@@ -115,6 +117,9 @@ class measurement:
                      Return uncertainty propogated for a/b.
         """
         import math
+
+        if other._value == 0.0: raise ZeroDivisionError("Division by Zero error!")
+
         total_value = self._value/other._value
         total_error = math.sqrt(( (1/other._value)**2)*(self._error**2) + (self._value/other._value/other._value)**2*(other._error**2))
         return measurement(total_value,total_error)
@@ -126,35 +131,44 @@ class measurement:
         """
         return str(self._value) +"\u00B1" + str(self._error) 
 
-        
-x = measurement(1,1)
-y = measurement(2,2)
-z = measurement(3,3)
 
-print("===============================")
-help(measurement)
-print("===============================")
-print("x")
-print(x)
-print("y")
-print(y)
-print("z")
-print(z)
-print("===============================")
 
-print("addition")
-print(x+y)
-print("subtract")
-print(x-y)
-print("multiplication")
-print(x*y)
-print("division")
-print(x/y)
-print("===============================")
+def main():
+    """
+    Demonstrate the functionality of the measurement class. 
+    
+    """
+    x = measurement(1,1)
+    y = measurement(2,2)
+    z = measurement(3,3)
 
-print("x/y*z")
-print(x/y*z)
-print("===============================")
+    print("===============================")
+    #help(measurement)
+    print("===============================")
+    print("x")
+    print(x)
+    print("y")
+    print(y)
+    print("z")
+    print(z)
+    print("===============================")
+    
+    print("addition")
+    print(x+y)
+    print("subtract")
+    print(x-y)
+    print("multiplication")
+    print(x*y)
+    print("division")
+    print(x/y)
+    print("===============================")
+    
+    print("x/y*z")
+    print(x/y*z)
+    print("===============================")
 
+
+if __name__ == "__main__":
+    main()
 
 
