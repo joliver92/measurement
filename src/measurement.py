@@ -15,7 +15,7 @@ class Measurement:
 
     """
 
-    
+
     def __init__(self,value,error):
         """Initialise the nominal value and the uncertainty
         of the Measurement
@@ -26,6 +26,9 @@ class Measurement:
 
         self.value = value
         self.error = error
+
+    def __eq__(self, other):
+        return (self.value == other.value) and (self.error == other.error)
 
 
     def __add__(self,other):
