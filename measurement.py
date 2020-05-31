@@ -12,7 +12,8 @@ class Measurement:
     error -- the uncertainty component
 
     """
-
+    import math 
+    
     def __init__(self,value,error):
         """Initialise the nominal value and the uncertainty
         of the Measurement
@@ -36,7 +37,6 @@ class Measurement:
         Measurement: Return nominal1 + nominal2 in nominal
                      Return uncertainty in quadrature.
         """
-        import math
         total_value = self.value + other.value
         total_error = math.sqrt(self.error**2 + other.error**2)
         return Measurement(total_value,total_error )
@@ -54,7 +54,6 @@ class Measurement:
                      Return uncertainty in quadrature.
         """
 
-        import math
         total_value = self.value - other.value
         total_error = math.sqrt(self.error**2 + other.error**2)
 
@@ -73,7 +72,6 @@ class Measurement:
                      Return sqrt( nom2**2*unc1**2 + nom1**2*unc2**2).
         """
 
-        import math
         total_value = self.value*other.value
         total_error = math.sqrt((other.value**2)*(self.error**2) + (self.value**2)*(other.error**2))
 
@@ -91,7 +89,6 @@ class Measurement:
         Measurement: Return nominal1/nominal2 in nominal
                      Return uncertainty propogated for a/b.
         """
-        import math
 
         if other.value == 0.0: raise ZeroDivisionError("Division by Zero error!")
 
