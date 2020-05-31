@@ -20,9 +20,10 @@ class measurement:
         x = measurement(value,error)
 
         """
-        self._value = value
-        self._error = error
+        self.value = value
+        self.error = error
 
+    
     def __add__(self,other):
         """
         Add two measurements together 
@@ -36,8 +37,8 @@ class measurement:
                      Return uncertainty in quadrature.
         """
         import math
-        total_value = self._value + other._value
-        total_error = math.sqrt(self._error**2 + other._error**2)
+        total_value = self.value + other.value
+        total_error = math.sqrt(self.error**2 + other.error**2)
         return measurement(total_value,total_error )
 
     def __sub__(self,other):
@@ -54,8 +55,8 @@ class measurement:
         """
 
         import math
-        total_value = self._value - other._value
-        total_error = math.sqrt(self._error**2 + other._error**2)
+        total_value = self.value - other.value
+        total_error = math.sqrt(self.error**2 + other.error**2)
 
         return measurement(total_value,total_error)
 
@@ -73,8 +74,8 @@ class measurement:
         """
 
         import math
-        total_value = self._value*other._value
-        total_error = math.sqrt((other._value**2)*(self._error**2) + (self._value**2)*(other._error**2))
+        total_value = self.value*other.value
+        total_error = math.sqrt((other.value**2)*(self.error**2) + (self.value**2)*(other.error**2))
 
         return measurement(total_value,total_error )
 
@@ -92,10 +93,10 @@ class measurement:
         """
         import math
 
-        if other._value == 0.0: raise ZeroDivisionError("Division by Zero error!")
+        if other.value == 0.0: raise ZeroDivisionError("Division by Zero error!")
 
-        total_value = self._value/other._value
-        total_error = math.sqrt(( (1/other._value)**2)*(self._error**2) + (self._value/other._value/other._value)**2*(other._error**2))
+        total_value = self.value/other.value
+        total_error = math.sqrt(( (1/other.value)**2)*(self.error**2) + (self.value/other.value/other.value)**2*(other.error**2))
         return measurement(total_value,total_error)
 
     def __repr__(self):
@@ -103,7 +104,7 @@ class measurement:
         Return representation of measurement 
         Returns: value \u00B1 error
         """
-        return str(self._value) +"\u00B1" + str(self._error) 
+        return str(self.value) +"\u00B1" + str(self.error) 
 
 
 
