@@ -1,3 +1,5 @@
+import math
+
 class Measurement:
     """
     Form a number with an uncertainty.
@@ -12,7 +14,7 @@ class Measurement:
     error -- the uncertainty component
 
     """
-    import math 
+
     
     def __init__(self,value,error):
         """Initialise the nominal value and the uncertainty
@@ -21,6 +23,7 @@ class Measurement:
         x = Measurement(value,error)
 
         """
+
         self.value = value
         self.error = error
 
