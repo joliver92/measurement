@@ -15,39 +15,13 @@ class measurement:
 
     def __init__(self,value,error):
         """Initialise the nominal value and the uncertainty 
-        of the measurement  """
+        of the measurement  
+
+        x = measurement(value,error)
+
+        """
         self._value = value
         self._error = error
-
-    @property
-    def value(self):
-        """ Return the nominal value of the measurement"""
-        return self._value
-
-    @value.setter
-    def value(self,value):
-        """ Set the nominal value of the measurement"""
-        self._value = value
-
-    @value.deleter
-    def value(self):
-        """ deleter """
-        del self._value
-
-    @property
-    def error(self,error):
-        """ Return the uncertainty of the measurement"""
-        return self._error
-
-    @error.setter
-    def error(self,error):
-        """Set the uncertainty of the measurement """
-        self._error = error
-
-    @error.deleter
-    def error(self):
-        del self._error
-
 
     def __add__(self,other):
         """
