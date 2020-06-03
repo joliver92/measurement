@@ -104,7 +104,8 @@ class Measurement:
         total_value = self.value / other.value
         total_error = math.sqrt(
             ((1 / other.value) ** 2) * (self.error ** 2)
-            + (self.value / other.value / other.value) ** 2 * (other.error ** 2)
+            + (self.value / other.value / other.value) ** 2
+            * (other.error ** 2)
         )
         return Measurement(total_value, total_error)
 
